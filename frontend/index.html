@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asterism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+      body {
+        font-family: 'Avenir Next', 'Avenir', 'Inter', sans-serif;
+        /* Background handled by App component for theming */
+        overflow: hidden; /* Prevent scroll on body, canvas handles it */
+      }
+      /* Custom scrollbar for side panel */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #334155;
+        border-radius: 20px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: #475569;
+      }
+
+      /* Dark Mode: Wandering & Morphing Nebula Blobs */
+      @keyframes blob-wander-1 {
+        0%, 100% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        25% { transform: translate(40vw, 15vh) scale(1.1); border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%; }
+        50% { transform: translate(20vw, 40vh) scale(0.9); border-radius: 70% 30% 50% 50% / 30% 40% 60% 50%; }
+        75% { transform: translate(-10vw, 20vh) scale(1.05); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      }
+      @keyframes blob-wander-2 {
+        0%, 100% { transform: translate(0, 0) scale(1); border-radius: 50% 50% 30% 70% / 50% 30% 70% 40%; }
+        33% { transform: translate(-30vw, 30vh) scale(1.2); border-radius: 70% 30% 50% 50% / 30% 40% 60% 50%; }
+        66% { transform: translate(-40vw, -10vh) scale(0.85); border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%; }
+      }
+      @keyframes blob-wander-3 {
+        0%, 100% { transform: translate(0, 0) scale(1); border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
+        33% { transform: translate(30vw, -30vh) scale(1.3); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        66% { transform: translate(-20vw, -40vh) scale(0.8); border-radius: 70% 30% 50% 50% / 30% 40% 60% 50%; }
+      }
+
+      .animate-blob-1 { animation: blob-wander-1 35s infinite ease-in-out alternate; }
+      .animate-blob-2 { animation: blob-wander-2 42s infinite ease-in-out alternate; }
+      .animate-blob-3 { animation: blob-wander-3 38s infinite ease-in-out alternate; }
+
+      /* Light Mode: Morning Rays */
+      .ray {
+        position: absolute;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,247,237,0.6) 50%, rgba(255,255,255,0) 100%);
+        width: 150px;
+        opacity: 0.5;
+        filter: blur(40px);
+        transform-origin: top;
+      }
+      @keyframes ray-float {
+        0% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0.5; }
+        50% { transform: rotate(42deg) translateY(-20px) scale(1.05); opacity: 0.7; }
+        100% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0.5; }
+      }
+      .animate-ray-1 { animation: ray-float 10s ease-in-out infinite; }
+      .animate-ray-2 { animation: ray-float 14s ease-in-out infinite; animation-delay: 1s; }
+      .animate-ray-3 { animation: ray-float 18s ease-in-out infinite; animation-delay: 2s; }
+
+      /* Shooting Star Animation */
+      .star-wrapper {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+        /* Rotation and Position set via inline styles in React */
+      }
+
+      .shooting-star {
+        height: 1px; /* Smaller height */
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+        opacity: 0;
+        filter: drop-shadow(0 0 4px rgba(167, 139, 250, 0.9)); /* Violet Glow */
+        animation-name: shoot;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes shoot {
+        0% {
+          transform: translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(200vmax); /* Increased from 100vh to 200vmax to ensure off-screen exit */
+          opacity: 0;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "d3": "https://esm.sh/d3@^7.9.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Asterism",
+  "description": "A minimalist Book Knowledge Graph visualizing connections and citations between literary works, featuring an interactive force-directed graph.",
+  "requestFramePermissions": []
+}
