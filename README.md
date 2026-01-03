@@ -10,7 +10,7 @@ This app is primarily a log of my own reading journey, but it may as well offer 
 ## Features
 
 - **Interactive Graph Visualization:** A physics-based network graph where books are stars and citations are the gravity that binds them.
-- **Contextual Awareness:** Click any connection to reveal the specific **quote** linking two books and the sentiment (*Recommended*, *Neutral*, or *Critiqued*).
+- **Contextual Awareness:** Click any connection to reveal the specific **quote** linking two books.
 - **Deep Search:** View the entire universe of books, or isolate a specific book and seeing only its 1st, 2nd, or 3rd-degree connections.
 - **Focus & Camera:** Automatic camera panning and zooming to focus on selected nodes or clusters.
 
