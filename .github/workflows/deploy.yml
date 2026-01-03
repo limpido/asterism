@@ -45,7 +45,7 @@ jobs:
             docker rm $APP_NAME || true
             docker run -d \
               --name $APP_NAME \
-              -p 8080:8080 \
+              -p 80:8080 \
               -e DATABASE_URL=${{ secrets.SUPABASE_URL }} \
               $IMAGE_TAG
             docker image prune -f
