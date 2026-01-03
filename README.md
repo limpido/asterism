@@ -1,6 +1,6 @@
 # Asterism 🌌
 
-**Asterism** is a minimalist, interactive book knowledge graph that visualizes the interconnections between books, revealing the hidden constellations of human thought.
+**Asterism** is a vibe-coded, minimalist, interactive web app that visualizes the interconnections between books, revealing the hidden constellations of human thought.
 
 ## Motivation
 
@@ -12,7 +12,6 @@ This app is primarily a log of my own reading journey, but it may as well offer 
 - **Interactive Graph Visualization:** A physics-based network graph where books are stars and citations are the gravity that binds them.
 - **Contextual Awareness:** Click any connection to reveal the specific **quote** linking two books and the sentiment (*Recommended*, *Neutral*, or *Critiqued*).
 - **Deep Search:** View the entire universe of books, or isolate a specific book and seeing only its 1st, 2nd, or 3rd-degree connections.
-- **Sentiment Tracking:** Visual distinction between citations that are recommendations (green), critiques (red), or neutral references.
 - **Focus & Camera:** Automatic camera panning and zooming to focus on selected nodes or clusters.
 
 ## Tech Stack
