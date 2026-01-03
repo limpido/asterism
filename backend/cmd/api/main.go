@@ -47,7 +47,7 @@ func main() {
 		c.Next()
 	})
 
-	r.GET("/api/graph", func(c *gin.Context) {
+	r.GET("/asterism/all", func(c *gin.Context) {
 		rows, err := db.Query("SELECT id, title, author, genre, year FROM nodes")
 		if err != nil {
 			log.Println("Error querying nodes:", err)
