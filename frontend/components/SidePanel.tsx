@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 import { X, BookOpen, Quote, User, Tag, Calendar, ExternalLink, ArrowDown } from 'lucide-react';
 import { Node, Link } from '../types';
 
@@ -22,7 +23,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose, data, type, them
   const borderSubtle = isDark ? 'border-white/5' : 'border-slate-200';
   
   // Updated cardBg for Light mode to match Cyan theme (bg-cyan-50/50 with cyan border)
-  const cardBg = isDark ? 'bg-white/5 border-white/5' : 'bg-cyan-50/50 border-cyan-100';
+  const cardBg = isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50/50 border-slate-100';
   
   // Updated to Violet for dark mode
   const statBg = isDark ? 'bg-violet-950/30 border-violet-900/30' : 'bg-cyan-50 border-cyan-100';
@@ -45,7 +46,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ isOpen, onClose, data, type, them
             ) : (
                 <>
                     <Quote className={`w-5 h-5 ${isDark ? 'text-violet-400' : 'text-cyan-600'}`} />
-                    <span>Connection Context</span>
+                    <span>Connection</span>
                 </>
             )}
         </h2>
@@ -122,10 +123,6 @@ const NodeContent: React.FC<{ node: Node, theme: 'light' | 'dark', classes: any 
             </div>
 
             <div className={`prose prose-sm ${isDark ? 'prose-invert' : ''}`}>
-                <p className={`${classes.textSecondary} leading-relaxed`}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
             </div>
         </div>
     );
@@ -159,15 +156,14 @@ const LinkContent: React.FC<{ link: Link, theme: 'light' | 'dark', classes: any,
     };
 
     return (
-        <div className="space-y-6">
-            
+        <div className="space-y-16">
             {/* Source -> Arrow -> Target Visual */}
             <div className={`flex flex-col items-center p-5 rounded-2xl border gap-4 shadow-inner ${classes.cardBg}`}>
                 <div className="w-full text-center">
                     <div className={`text-[10px] font-bold tracking-widest uppercase mb-1 ${classes.textSecondary}`}>Source</div>
                     <button 
                         onClick={() => handleNodeClick(source)}
-                        className={`font-semibold text-lg leading-tight ${classes.textPrimary} hover:underline cursor-pointer focus:outline-none transition-opacity hover:opacity-80`}
+                        className={`font-semibold text-lg leading-tight ${classes.textPrimary} cursor-pointer focus:outline-none transition-opacity hover:opacity-80`}
                     >
                         {source.title}
                     </button>
@@ -175,10 +171,10 @@ const LinkContent: React.FC<{ link: Link, theme: 'light' | 'dark', classes: any,
                 
                 <div className="relative flex items-center justify-center w-full py-2">
                     {/* Divider line: Uses Cyan-200 in light mode to stand out from background and match primary theme */}
-                    <div className={`h-px w-full absolute top-1/2 left-0 -z-10 ${isDark ? 'bg-slate-700' : 'bg-cyan-200'}`}></div>
+                    <div className={`h-px w-full absolute top-1/2 left-0 -z-10 ${isDark ? 'bg-slate-700' : 'bg-slate-200'}`}></div>
                     
                     {/* Arrow Wrapper: Matches card background (slate-50) in light mode to cleanly mask the line */}
-                    <div className={`px-2 rounded-full border ${isDark ? 'bg-slate-900/95 border-slate-700' : 'bg-cyan-50 border-cyan-200'}`}>
+                    <div className={`px-2 rounded-full border ${isDark ? 'bg-slate-900/95 border-slate-700' : 'bg-slate-50 border-slate-200'}`}>
                         <ArrowDown className={`w-5 h-5 ${classes.textSecondary}`} />
                     </div>
                 </div>
@@ -187,26 +183,22 @@ const LinkContent: React.FC<{ link: Link, theme: 'light' | 'dark', classes: any,
                     <div className={`text-[10px] font-bold tracking-widest uppercase mb-1 ${classes.textSecondary}`}>Mentions</div>
                     <button 
                         onClick={() => handleNodeClick(target)}
-                        className={`font-semibold text-lg leading-tight ${classes.textPrimary} hover:underline cursor-pointer focus:outline-none transition-opacity hover:opacity-80`}
+                        className={`font-semibold text-lg leading-tight ${classes.textPrimary} cursor-pointer focus:outline-none transition-opacity hover:opacity-80`}
                     >
                         {target.title}
                     </button>
                 </div>
             </div>
 
-            <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getSentimentStyle(link.sentiment)}`}>
+            {/* <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getSentimentStyle(link.sentiment)}`}>
                 {link.sentiment.charAt(0).toUpperCase() + link.sentiment.slice(1)}
-            </div>
+            </div> */}
 
             <div className="relative">
                 <Quote className={`absolute -top-3 -left-2 w-8 h-8 -z-10 ${isDark ? 'text-slate-800' : 'text-slate-200'}`} />
-                <blockquote className={`text-lg italic font-serif leading-relaxed pl-2 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-                    "{link.quote}"
-                </blockquote>
-            </div>
-
-             <div className={`p-4 rounded-lg border text-sm ${classes.cardBg} ${classes.textSecondary}`}>
-                This connection represents a gravitational pull of ideas between the two works.
+                <blockquote className={`text-lg italic font-serif leading-relaxed pl-2 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(link.quote) }}
+                />
             </div>
         </div>
     );

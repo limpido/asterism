@@ -330,8 +330,8 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(({ data, onSele
     const defs = d3.select(svgRef.current).select("defs");
     ['recommended', 'neutral', 'critiqued', 'default'].forEach(type => {
       let color = colors.linkSentiment.neutral;
-      if (type === 'recommended') color = colors.linkSentiment.recommended;
-      if (type === 'critiqued') color = colors.linkSentiment.critiqued;
+      // if (type === 'recommended') color = colors.linkSentiment.recommended;
+      // if (type === 'critiqued') color = colors.linkSentiment.critiqued;
       defs.select(`#arrow-${type} path`).attr("fill", color);
     });
 
@@ -397,9 +397,10 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(({ data, onSele
     links
         .transition().duration(300)
         .attr("stroke", d => {
-            if (d.sentiment === 'recommended') return colors.linkSentiment.recommended;
-            if (d.sentiment === 'critiqued') return colors.linkSentiment.critiqued;
-            return colors.linkSentiment.neutral;
+            // if (d.sentiment === 'recommended') return colors.linkSentiment.recommended;
+            // if (d.sentiment === 'critiqued') return colors.linkSentiment.critiqued;
+            // return colors.linkSentiment.neutral;
+            return colors.linkSentiment.recommended;
         })
         .style("filter", isDark ? "drop-shadow(0 0 2px rgba(148, 163, 184, 0.5))" : null) // Add glow to links
         .attr("opacity", d => {
