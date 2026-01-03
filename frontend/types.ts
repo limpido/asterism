@@ -9,7 +9,8 @@ export interface Node extends SimulationNodeDatum {
   genre: string;
   year?: number;
   coverUrl?: string;
-  connectionCount?: number; // Calculated at runtime
+  connectionCount?: number;
+  inDegreeCount?: number;
   x?: number;
   y?: number;
   fx?: number | null;

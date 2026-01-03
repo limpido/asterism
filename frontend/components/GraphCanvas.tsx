@@ -125,17 +125,20 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(({ data, onSele
     nodesRef.current = data.nodes.map(n => ({ ...n }));
     linksRef.current = data.links.map(l => ({ ...l }));
 
-    // Calculate connection counts
+    // Calculate connection counts and in-degree counts
     const nodeCounts: Record<number, number> = {};
+    const inDegreeCounts: Record<number, number> = {};
     linksRef.current.forEach(l => {
         const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
         const targetId = typeof l.target === 'object' ? l.target.id : l.target;
         nodeCounts[sourceId as number] = (nodeCounts[sourceId as number] || 0) + 1;
         nodeCounts[targetId as number] = (nodeCounts[targetId as number] || 0) + 1;
+        inDegreeCounts[targetId as number] = (inDegreeCounts[targetId as number] || 0) + 1;
     });
 
     nodesRef.current.forEach(n => {
       n.connectionCount = nodeCounts[n.id] || 0;
+      n.inDegreeCount = inDegreeCounts[n.id] || 0;
     });
 
     // Clear previous
@@ -156,7 +159,7 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(({ data, onSele
     svg.call(zoom).on("dblclick.zoom", null);
     zoomRef.current = zoom;
 
-    const getNodeRadius = (d: Node) => 6 + (d.connectionCount || 0) * 2;
+    const getNodeRadius = (d: Node) => 6 + (d.inDegreeCount || 0) * 2;
     const getFontSize = (d: Node) => Math.min(20, Math.max(12, 11 + (d.connectionCount || 0)));
 
     // Simulation setup
