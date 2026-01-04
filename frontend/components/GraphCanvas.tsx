@@ -246,20 +246,13 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(
             .forceLink<Node, Link>(linksRef.current)
             .id((d) => d.id)
             .distance(200)
-        ) // Increased distance to give links more room
-        .force("charge", d3.forceManyBody().strength(-1000)) // Stronger repulsion to clear space around nodes
+        )
+        .force("charge", d3.forceManyBody().strength(-2000)) // Stronger repulsion to clear space around nodes
         // Add central gravity to keep disconnected components closer together
-        .force("x", d3.forceX(width / 2).strength(0.06)) // Adjusted strength
-        .force("y", d3.forceY(height / 2).strength(0.06)) // Adjusted strength
+        .force("x", d3.forceX(width / 2).strength(0.15))
+        .force("y", d3.forceY(height / 2).strength(0.15))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force(
-          "collide",
-          d3
-            .forceCollide<Node>()
-            .radius((d) => getNodeRadius(d) + 25)
-            .strength(1)
-            .iterations(2)
-        ); // Stricter collision
+        .force("collide", d3.forceCollide<Node>().radius(d => getNodeRadius(d) + 35).strength(1).iterations(2)); // Stricter collision
 
       // Pre-calculate layout to ensure coordinates are ready immediately
       simulation.tick(300);
