@@ -4,7 +4,7 @@
 
 ## About
 
-This app is primarily a log of my own reading journey, with the data still maintained manually by me. In retrospect, it may as well serve as an alternative to modern recommendation algorithms, inviting one to discover books by tracing the paper trails authors leave behind.
+This app is primarily a log of my own reading journey, with the data maintained manually by me. In retrospect, it may as well serve as an alternative to modern recommendation algorithms, offering a way to discover books by tracing the paper trails authors leave behind.
 
 ## Features
 
