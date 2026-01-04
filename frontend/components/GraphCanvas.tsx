@@ -253,7 +253,7 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(
         .force("x", d3.forceX(width / 2).strength(0.15))
         .force("y", d3.forceY(height / 2).strength(0.15))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide<Node>().radius(d => getNodeRadius(d) + 35).strength(1).iterations(2)); // Stricter collision
+        .force("collide", d3.forceCollide<Node>().radius(d => getNodeRadius(d) + 35).strength(1).iterations(2));
 
       // Pre-calculate layout to ensure coordinates are ready immediately
       simulation.tick(300);
