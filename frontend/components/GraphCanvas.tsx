@@ -245,9 +245,10 @@ const GraphCanvas = forwardRef<GraphCanvasRef, GraphCanvasProps>(
           d3
             .forceLink<Node, Link>(linksRef.current)
             .id((d) => d.id)
-            .distance(200)
+            .distance(150)
+            .strength(1.2)
         )
-        .force("charge", d3.forceManyBody().strength(-2000)) // Stronger repulsion to clear space around nodes
+        .force("charge", d3.forceManyBody().strength(-3000)) // Stronger repulsion to clear space around nodes
         // Add central gravity to keep disconnected components closer together
         .force("x", d3.forceX(width / 2).strength(0.15))
         .force("y", d3.forceY(height / 2).strength(0.15))
