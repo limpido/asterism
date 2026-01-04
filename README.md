@@ -4,8 +4,8 @@
 
 ## Motivation
 
-I am no prolific reader. Yet, even in the handful of books I’ve read, I’ve noticed that books rarely exist in isolation——they constantly reference one another. This prompted me to think that it might be interesting to visualize these interconnections, capturing the exact passages that bridge them.
-This app is primarily a log of my own reading journey, but it may as well offer an alternative to modern recommendation algorithms——a way to discover books by tracing the paper trails left by authors themselves.
+I am no prolific reader. Yet, even in the handful of books I’ve read, I’ve noticed that books rarely exist in isolation—they constantly reference one another. This prompted me to think that it might be interesting to visualize these interconnections, capturing the exact passages that bridge them.
+This app is primarily a log of my own reading journey, but it may as well offer an alternative to modern recommendation algorithms—a way to discover books by tracing the paper trails left by authors themselves.
 
 ## Features
 
