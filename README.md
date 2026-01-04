@@ -1,11 +1,10 @@
 # Asterism 🌌
 
-**Asterism** is a vibe-coded, minimalist, interactive web app that visualizes the interconnections between books, revealing the hidden constellations of human thought.
+**Asterism** is a vibe-coded, minimalist, interactive web app that visualizes the interconnections between books, capturing the exact passages that bridge them.
 
-## Motivation
+## About
 
-I am no prolific reader. Yet, even in the handful of books I’ve read, I’ve noticed that books rarely exist in isolation—they constantly reference one another. This prompted me to think that it might be interesting to visualize these interconnections, capturing the exact passages that bridge them.
-This app is primarily a log of my own reading journey, but it may as well offer an alternative to modern recommendation algorithms—a way to discover books by tracing the paper trails left by authors themselves.
+This app is primarily a log of my own reading journey, with the data still maintained manually by me. In retrospect, it may as well serve as an alternative to modern recommendation algorithms, inviting one to discover books by tracing the paper trails authors leave behind.
 
 ## Features
 
