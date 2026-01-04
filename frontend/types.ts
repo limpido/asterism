@@ -23,6 +23,7 @@ export interface Link extends SimulationLinkDatum<Node> {
   target: number | Node;
   quote: string;
   sentiment: Sentiment;
+  isSameAuthor: boolean;
 }
 
 export interface GraphData {

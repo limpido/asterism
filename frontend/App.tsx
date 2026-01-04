@@ -274,7 +274,7 @@ const App: React.FC = () => {
           </button>
       </div>
 
-      <div className="absolute top-0 left-0 w-full z-[100] flex items-start justify-center p-4 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full z-30 flex items-start justify-center p-4 pointer-events-none">
           <div className="pointer-events-auto w-full max-w-lg px-14 md:px-0">
               <SearchBar 
               ref={searchInputRef}
